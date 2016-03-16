@@ -10,12 +10,35 @@ shinyUI(fluidPage(
   sidebarLayout(
     position = "right",
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
-    ),
+      fluidRow(
+        column(12,
+          sliderInput("bins",
+            "Number of bins:",
+            min = 1,
+            max = 50,
+            value = 30
+          )
+        )
+      ),
+
+      fluidRow(
+        column(6,
+          checkboxGroupInput("checkGroup",
+            label = h3("Sports"),
+            choices = list("Swim" = 1,
+               "Bike" = 2, "Run" = 3),
+            selected = 1)
+          ),
+        column(6,
+          checkboxGroupInput("checkGroup",
+            label = h3("Years"),
+            choices = list("2011" = 1,
+               "2012" = 2, "2013" = 3),
+            selected = 1)
+          )
+        )
+      ),
+
 
     # Show a plot of the generated distribution
     mainPanel(
