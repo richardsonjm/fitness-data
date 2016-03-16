@@ -8,6 +8,7 @@ shinyUI(fluidPage(
 
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
+    position = "right",
     sidebarPanel(
       sliderInput("bins",
                   "Number of bins:",
@@ -18,6 +19,10 @@ shinyUI(fluidPage(
 
     # Show a plot of the generated distribution
     mainPanel(
+      img(src="digital_clock_display.png", height = 200, width = 400),
+      h1("Charts", align = "center"),
+      br(),
+      div("div creates segments of text with a similar style.", style = "color:blue", align="center"),
       plotOutput("distPlot")
     )
   )
