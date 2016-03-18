@@ -11,33 +11,20 @@ shinyUI(fluidPage(
     position = "right",
     sidebarPanel(
       fluidRow(
-        column(12,
-          sliderInput("bins",
-            "Number of bins:",
-            min = 1,
-            max = 50,
-            value = 30
-          )
-        )
-      ),
-
-      fluidRow(
         column(6,
-          checkboxGroupInput("checkGroup",
+          checkboxGroupInput("sport",
             label = h3("Sports"),
-            choices = list("Swim" = 1,
-               "Bike" = 2, "Run" = 3),
-            selected = 1)
-          ),
+            choices = list("Swim" = 1, "Bike" = 2, "Run" = 3)
+          )
+        ),
         column(6,
-          checkboxGroupInput("checkGroup",
+          checkboxGroupInput("year",
             label = h3("Years"),
-            choices = list("2011" = 1,
-               "2012" = 2, "2013" = 3),
-            selected = 1)
+            choices = list("2011" = 1, "2012" = 2, "2013" = 3)
           )
         )
-      ),
+      )
+    ),
 
 
     # Show a plot of the generated distribution
@@ -46,7 +33,8 @@ shinyUI(fluidPage(
       h1("Charts", align = "center"),
       br(),
       div("div creates segments of text with a similar style.", style = "color:blue", align="center"),
-      plotOutput("distPlot")
+      textOutput("text1"),
+      textOutput("text2")
     )
   )
 ))

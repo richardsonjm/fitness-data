@@ -10,11 +10,11 @@ shinyServer(function(input, output) {
   #     when inputs change
   #  2) Its output type is a plot
 
-  output$distPlot <- renderPlot({
-    x    <- faithful[, 2]  # Old Faithful Geyser data
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'lightblue', border = 'white')
+  output$text1 <- renderText({
+    paste("You have selected", input$sport)
   })
+  output$text2 <- renderText({
+    paste("You have selected", input$year)
+  })
+
 })
