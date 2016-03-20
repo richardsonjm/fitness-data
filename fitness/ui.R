@@ -1,5 +1,3 @@
-library(shiny)
-
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
 
@@ -10,22 +8,11 @@ shinyUI(fluidPage(
   sidebarLayout(
     position = "right",
     sidebarPanel(
-      fluidRow(
-        column(6,
-          checkboxGroupInput("sport",
-            label = h3("Sports"),
-            choices = list("Swim" = 1, "Bike" = 2, "Run" = 3)
-          )
-        ),
-        column(6,
-          checkboxGroupInput("year",
-            label = h3("Years"),
-            choices = list("2011" = 1, "2012" = 2, "2013" = 3)
-          )
-        )
+      checkboxGroupInput("sport",
+        label = h3("Sports"),
+        choices = list("Swim" = "Swim", "Bike" = "Bike", "Run" = "Run")
       )
     ),
-
 
     # Show a plot of the generated distribution
     mainPanel(
@@ -34,7 +21,7 @@ shinyUI(fluidPage(
       br(),
       div("div creates segments of text with a similar style.", style = "color:blue", align="center"),
       textOutput("text1"),
-      textOutput("text2")
+      plotOutput("chart")
     )
   )
 ))

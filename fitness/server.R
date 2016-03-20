@@ -1,20 +1,19 @@
-library(shiny)
+# load library and global variables
+library(ggplot2)
+workout.2011 <- read.csv("/Users/johnrichardson/Development/code/project/fitness-data/wklog2011.csv", header = TRUE)
+workout.2011$Date <- as.Date(workout.2011$Date, format = "%d-%b-%y")
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
-
-  # Expression that generates a histogram. The expression is
-  # wrapped in a call to renderPlot to indicate that:
-  #
-  #  1) It is "reactive" and therefore should re-execute automatically
-  #     when inputs change
-  #  2) Its output type is a plot
-
   output$text1 <- renderText({
     paste("You have selected", input$sport)
   })
-  output$text2 <- renderText({
-    paste("You have selected", input$year)
-  })
 
+  output$chart <- renderPlot({
+    ggplot() +
+      geom_point(data= workout.2011, aes(Date, Swim), color = "blue") +
+      geom_point(data= workout.2011, aes(Date, Bike), color = "black") +
+      geom_point(data= workout.2011, aes(Date, Run), color = "green") +
+      scale_x_date(date_labels = "%b %d") + xlab("") + ylab("Sport")
+  })
 })
