@@ -8,19 +8,20 @@ shinyUI(fluidPage(
   sidebarLayout(
     position = "right",
     sidebarPanel(
-      checkboxGroupInput("sport",
+      selectInput("sport",
         label = h3("Sports"),
-        choices = list("Swim" = "Swim", "Bike" = "Bike", "Run" = "Run")
+        choices = list("Swim", "Bike", "Run"),
+        selected = "Bike"
       )
     ),
 
     # Show a plot of the generated distribution
     mainPanel(
       img(src="digital_clock_display.png", height = 200, width = 400),
-      h1("Charts", align = "center"),
+      textOutput("text1"),
+      h1("Chart Title Goes Here", align = "center"),
       br(),
       div("div creates segments of text with a similar style.", style = "color:blue", align="center"),
-      textOutput("text1"),
       plotOutput("chart")
     )
   )
